@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Корзина — Пасека</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page page--cart">
+  <header class="site-header">
+    <div class="container header-grid">
+      <div class="brand"><a href="index.html">Пасека</a></div>
+      <nav class="nav">
+        <a href="catalog.html">Каталог</a>
+        <a href="about.html">О нас</a>
+        <a href="cart.html" class="cart-link">Корзина <span id="cart-count" class="cart-count">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-grid">
+    <h1>Корзина</h1>
+
+    <section id="cart-table" class="cart-table">
+      <!-- Rows rendered by cart.js -->
+      <div class="cart-row cart-row--head">
+        <div class="col name">Товар</div>
+        <div class="col qty">Кол-во</div>
+        <div class="col price">Цена</div>
+      </div>
+    </section>
+
+    <div class="cart-total">
+      <div>Итого: <span id="cart-total">0</span> ₽</div>
+    </div>
+
+    <form id="checkout-form" class="checkout-form">
+      <h2>Оформление заказа</h2>
+      <label>Имя
+        <input name="name" required>
+      </label>
+      <label>Телефон
+        <input name="phone" required>
+      </label>
+      <label>Email
+        <input name="email" type="email">
+      </label>
+      <label>Адрес
+        <textarea name="address" required></textarea>
+      </label>
+      <button type="submit" class="btn-primary">Оформить заказ</button>
+    </form>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>© Пасека — честный мёд.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="cart.js"></script>
+</body>
+</html>

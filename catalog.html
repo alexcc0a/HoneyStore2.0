@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Каталог — Пасека</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page page--catalog">
+  <header class="site-header">
+    <div class="container header-grid">
+      <div class="brand"><a href="index.html">Пасека</a></div>
+      <nav class="nav">
+        <a href="catalog.html">Каталог</a>
+        <a href="about.html">О нас</a>
+        <a href="cart.html" class="cart-link">Корзина <span id="cart-count" class="cart-count">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-grid">
+    <header class="catalog-header">
+      <h1 class="catalog-title">Каталог</h1>
+      <p class="catalog-lede">Только то, что получилось в этом сезоне.</p>
+      <div class="catalog-controls">
+        <input id="catalog-search" class="search-input" type="search" placeholder="Найти мёд" aria-label="Поиск по каталогу">
+      </div>
+    </header>
+
+    <section id="catalog-grid" class="products-grid">
+      <!-- Product cards rendered by catalog.js -->
+    </section>
+
+    <div id="catalog-empty" class="empty-state" hidden>
+      По запросу ничего не найдено.
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>© Пасека — честный мёд. Без слов «премиум».</p>
+    </div>
+  </footer>
+
+  <template id="product-template">
+    <article class="product-card">
+      <div class="product-image" aria-hidden="true">
+        <img src="" alt="" class="product-photo">
+      </div>
+      <div class="product-body">
+        <h3 class="product-title"></h3>
+        <p class="product-desc"></p>
+      </div>
+      <div class="product-meta">
+        <div class="product-price"></div>
+        <button class="btn-buy">Купить</button>
+      </div>
+    </article>
+  </template>
+
+  <script type="module" src="catalog.js"></script>
+  <script type="module" src="cart.js"></script>
+</body>
+</html>
