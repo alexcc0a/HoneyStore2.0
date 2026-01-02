@@ -122,8 +122,9 @@ p,li{
 }
 
 .burger:focus{
-  outline:2px solid rgba(224,178,74,.8);
-  outline-offset:2px;
+  outline:none; /* Убираем видимую рамку вокруг бургер-кнопки при фокусе */
+  outline-offset:0; /* сброс смещения */
+  box-shadow:none; /* убираем возможные теневые эффекты браузера */
 }
 
 .burger-box{
@@ -153,6 +154,49 @@ p,li{
 
 .burger-inner::before{top:-6px}
 .burger-inner::after{top:6px}
+
+/* Убираем фокусные рамки и tap-highlight для интерактивных элементов в моб. меню
+   Пользователь просил полностью убрать видимые рамки при взаимодействии. */
+.burger,
+.burger:focus,
+.nav-list a,
+.nav-list a:focus,
+.nav-list.is-open a,
+.nav-list.is-open a:focus,
+button,
+button:focus,
+.btn,
+.btn:focus,
+.btn-buy,
+.btn-buy:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent; /* убирает синюю подсветку на iOS/Android */
+}
+
+/* Дополнительные правила для надёжного отключения фокуса/подсветки на мобильных браузерах */
+.nav-list a:active,
+.nav-list a:focus-visible,
+.nav-list.is-open a:active,
+.nav-list.is-open a:focus-visible,
+.burger:active,
+.burger:focus-visible,
+button:active,
+button:focus-visible,
+a,
+a:active,
+a:focus,
+a:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important; /* iOS/Android */
+  -webkit-appearance: none !important; /* Safari/Chrome */
+  appearance: none !important;
+  outline-color: transparent !important;
+}
+
+/* Убираем внутреннюю рамку фокуса в Firefox для кнопок */
+button::-moz-focus-inner{border:0;padding:0}
 
 /* =========================
    LAYOUT
@@ -542,9 +586,3 @@ p,li{
 }
 
 .btn-primary:active{transform:translateY(1px)}
-
-/* На планшетах и десктопе — сохраняем одну колонку для полей (вертикальное расположение) */
-@media (min-width:481px){
-  .form-grid{grid-template-columns:1fr}
-  .form-field.full{grid-column:1 / -1}
-}
