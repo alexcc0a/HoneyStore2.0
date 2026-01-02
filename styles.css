@@ -267,6 +267,12 @@ button::-moz-focus-inner{border:0;padding:0}
   padding:12px;
 }
 
+.product-body{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
 .product-title{
   font-size:1rem;
   margin:0 0 6px;
@@ -274,15 +280,21 @@ button::-moz-focus-inner{border:0;padding:0}
 }
 
 .product-desc{
-  margin:0;
+  margin:0 0 12px;
   color:var(--muted);
   font-size:.875rem;
 }
 
 .product-meta{
   display:flex;
-  justify-content:space-between;
-  margin-top:12px;
+  gap:8px;
+  align-items:center;
+  margin-top:auto;
+}
+
+.product-price{
+  flex:1;
+  font-weight:600;
 }
 
 .btn-buy{
@@ -290,6 +302,7 @@ button::-moz-focus-inner{border:0;padding:0}
   border:0;
   font-weight:700;
   cursor:pointer;
+  white-space:nowrap;
 }
 
 .btn-buy:hover{text-decoration:underline}
@@ -503,3 +516,54 @@ button::-moz-focus-inner{border:0;padding:0}
 /* =========================
    DESKTOP ONLY
 ========================= */
+
+/* =========================
+   ABOUT PAGE - MOBILE
+========================= */
+
+/* Увеличиваем изображение на 15% для смартфонов на странице "о нас" */
+@media (max-width:480px){
+  .page--about .article-photo{
+    transform:scale(1.15);
+    transform-origin:center center;
+  }
+
+  .page--about .article-image{
+    overflow:hidden;
+  }
+}
+
+/* =========================
+   CART PAGE - MOBILE
+========================= */
+
+/* Мобильная версия формы оформления заказа */
+@media (max-width:640px){
+  /* Отступ между "Итого" и "Оформление заказа" */
+  .checkout-form{
+    margin-top:24px;
+  }
+
+  /* Вертикальное расположение полей формы */
+  .form-grid{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+
+  .form-field{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .field-label{
+    display:block;
+  }
+
+  .form-field input,
+  .form-field textarea{
+    width:100%;
+  }
+}
+
