@@ -85,7 +85,17 @@ if(!window.Cart){
 window.addEventListener('DOMContentLoaded', ()=>{
   const updateUI = ()=>{
     const countNode = document.getElementById('cart-count');
-    if(countNode) countNode.textContent = window.Cart.count();
+    if(countNode){
+      const c = window.Cart.count();
+      // не отображаем 0 рядом с "Корзина" — скрываем спан, показываем число только если > 0
+      if(Number(c) > 0){
+        countNode.textContent = c;
+        countNode.style.display = '';
+      }else{
+        countNode.textContent = '';
+        countNode.style.display = 'none';
+      }
+    }
 
     const totalNode = document.getElementById('cart-total');
     if(totalNode) totalNode.textContent = window.Cart.getTotal();
