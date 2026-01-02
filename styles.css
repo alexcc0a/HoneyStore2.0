@@ -316,18 +316,18 @@ button::-moz-focus-inner{border:0;padding:0}
 
 /* Десктопная версия: картинка как отдельный блок */
 .hero-image--desktop{
-  display:none;
+  display:none !important;
 }
 
 @media (min-width:481px){
   /* Скрыть мобильную картинку на больших экранах */
   .hero-image--mobile{
-    display:none;
+    display:none !important;
   }
 
   /* Показать десктопную картинку */
   .hero-image--desktop{
-    display:flex;
+    display:flex !important;
     flex-direction:column;
     padding-block:32px;
     justify-content:center;
