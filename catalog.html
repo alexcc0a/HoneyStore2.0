@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Каталог — Пасека</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -10,11 +10,20 @@
   <header class="site-header">
     <div class="container header-grid">
       <div class="brand"><a href="index.html">Пасека</a></div>
-      <nav class="nav">
-        <a href="catalog.html">Каталог</a>
-        <a href="about.html">О нас</a>
-        <a href="cart.html" class="cart-link">Корзина <span id="cart-count" class="cart-count">0</span></a>
+      <!-- responsive-nav start -->
+      <button class="burger" aria-controls="main-nav-list" aria-expanded="false" aria-label="Открыть меню">
+        <span class="burger-box">
+          <span class="burger-inner"></span>
+        </span>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Главная навигация">
+        <ul id="main-nav-list" class="nav-list">
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="about.html">О нас</a></li>
+          <li><a href="cart.html" class="cart-link">Корзина <span id="cart-count" class="cart-count">0</span></a></li>
+        </ul>
       </nav>
+      <!-- responsive-nav end -->
     </div>
   </header>
 
@@ -60,5 +69,6 @@
 
   <script type="module" src="catalog.js"></script>
   <script type="module" src="cart.js"></script>
+  <script src="assets/js/scripts.js" defer></script>
 </body>
 </html>
