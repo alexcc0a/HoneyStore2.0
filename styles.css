@@ -586,3 +586,19 @@ button::-moz-focus-inner{border:0;padding:0}
 }
 
 .btn-primary:active{transform:translateY(1px)}
+
+/* =========================
+   DESKTOP ONLY
+========================= */
+
+/* Desktop: slightly enlarge the main page hero image by 10% (only on index.html / .page--home) */
+@media (min-width:769px){
+  /* Ensure the hero image container clips the scaled image to avoid overflow */
+  .page--home .hero .hero-image{overflow:hidden}
+
+  /* Scale the hero photo up by 10% on desktop only */
+  .page--home .hero .hero-photo{
+    transform:scale(1.1);
+    transform-origin:center center;
+  }
+}
