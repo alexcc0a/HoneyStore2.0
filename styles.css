@@ -299,55 +299,79 @@ p,li{
   /* Сделаем чуть меньшую минимальную высоту на мобильных, чтобы не забивать экран */
   .site-header{min-height:42px} /* уменьшено с 56px до ~42px (≈ -25%) */
 
-  /* Мобильный вариант: изображение под текстом, фиксированная высота, сохраняем ритм */
-  .hero-image,
-  .hero .hero-photo{height:220px}
+  /* Контейнер для абсолютного позиционирования мобильного меню */
+  .header-grid{position:relative}
 
-  /* Центрируем текст в hero на мобильных для единого стильного ритма */
-  .hero > .hero-content{
-    align-items:center;
-    text-align:center;
-    /* уменьшенные внутренние отступы, чтобы можно было точно задать соотношение интервалов */
-    padding-block:12px;
+  /* Мобильное всплывающее меню справа под бургером */
+  .nav-list.is-open{
+    display:block; /* по-прежнему показываем */
+    position:absolute; /* выносим поверх потока */
+    top:calc(100% + 8px); /* чуть под шапкой */
+    right:12px; /* прижать к правому краю (под бургером) */
+    left:auto; /* отменяем растягивание слева */
+    min-width:160px; /* минимальная ширина меню */
+    background:#ffffff; /* контрастный фон для читаемости */
+    border-radius:8px;
+    padding:8px 10px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+    z-index:60; /* выше других элементов */
   }
 
-  /* Новое правило: заставляем hero занимать минимум 100vh на мобильных,
-     чтобы секция «Рекомендуем» всегда начиналась со второго экрана */
-  .hero{min-height:100vh; gap:12px}
+  /* Пунктам меню дать компактный вертикальный вид внутри всплывашки */
+  .nav-list.is-open li{padding:6px 0}
 
-  /* Убираем внутренние отступы у блока с изображением — поднимаем изображение */
-  .hero > .hero-image{padding:0}
+  /* Ссылка внутри всплывающего меню — растянуть и выровнять по левому краю внутри контейнера */
+  .nav-list.is-open a{display:block;padding:6px 10px;text-align:left}
 
-  /* Поднимаем саму фотографию на 14px; итоговый промежуток будет 10px */
-  .page--home .hero .hero-photo{margin-top:-14px}
+   /* Мобильный вариант: изображение под текстом, фиксированная высота, сохраняем ритм */
+   .hero-image,
+   .hero .hero-photo{height:220px}
 
-  /* Явно задаём отступ между заголовком и лидом — отправная точка для соотношения */
-  .headline{font-size:22px; margin-bottom:12px}
-  .lede{max-width:50ch; line-height:1.2}
+   /* Центрируем текст в hero на мобильных для единого стильного ритма */
+   .hero > .hero-content{
+     align-items:center;
+     text-align:center;
+     /* уменьшенные внутренние отступы, чтобы можно было точно задать соотношение интервалов */
+     padding-block:12px;
+   }
 
-  .products-grid{gap:14px}
-  .product-photo{height:140px}
-  .product-title{font-size:16px}
-  .product-desc{font-size:13px}
+   /* Новое правило: заставляем hero занимать минимум 100vh на мобильных,
+      чтобы секция «Рекомендуем» всегда начиналась со второго экрана */
+   .hero{min-height:100vh; gap:12px}
 
-  .site-footer{padding:16px 0;font-size:13px}
+   /* Убираем внутренние отступы у блока с изображением — поднимаем изображение */
+   .hero > .hero-image{padding:0}
 
-  /* Перемещаем бургер вправо только на главной странице в мобильном виде */
-  .page--home .header-grid .burger{
-    grid-column: 3; /* занять правую колонку сетки */
-    justify-self: end; /* прижать к правому краю */
-  }
+   /* Поднимаем саму фотографию на 14px; итоговый промежуток будет 10px */
+   .page--home .hero .hero-photo{margin-top:-14px}
 
-  /* Мобильный ритм: более выраженная пауза до следующего раздела */
-  .recommended{margin-top:48px}
+   /* Явно задаём отступ между заголовком и лидом — отправная точка для соотношения */
+   .headline{font-size:22px; margin-bottom:12px}
+   .lede{max-width:50ch; line-height:1.2}
 
-  /* Новое правило: заставляем .mobile-break переходить на новую строку на мобильных */
-  .mobile-break{
-    display:block;
-    margin-top:2px; /* уменьшённый отступ для компактности */
-  }
+   .products-grid{gap:14px}
+   .product-photo{height:140px}
+   .product-title{font-size:16px}
+   .product-desc{font-size:13px}
 
-}
+   .site-footer{padding:16px 0;font-size:13px}
+
+   /* Перемещаем бургер вправо в мобильном виде на всех страницах */
+   .header-grid .burger{
+     grid-column: 3; /* занять правую колонку сетки */
+     justify-self: end; /* прижать к правому краю */
+   }
+
+   /* Мобильный ритм: более выраженная пауза до следующего раздела */
+   .recommended{margin-top:48px}
+
+   /* Новое правило: заставляем .mobile-break переходить на новую строку на мобильных */
+   .mobile-break{
+     display:block;
+     margin-top:2px; /* уменьшённый отступ для компактности */
+   }
+
+ }
 
 /* =========================
    TABLET +
@@ -524,4 +548,3 @@ p,li{
   .form-grid{grid-template-columns:1fr}
   .form-field.full{grid-column:1 / -1}
 }
-
