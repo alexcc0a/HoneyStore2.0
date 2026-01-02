@@ -64,13 +64,15 @@ p,li{
 .site-header{
   border-bottom:1px solid rgba(0,0,0,.06);
   margin-bottom:var(--header-gap);
+  min-height:48px; /* уменьшено с 64px до ~48px (≈ -25%) */
+  /* background был DEBUG — удалён */
 }
 
 .header-grid{
   display:grid;
   grid-template-columns:auto 1fr auto;
   align-items:center;
-  padding:20px 0;
+  padding:27px 0; /* уменьшено с 36px до ~27px (≈ -25%) */
 }
 
 .brand{justify-self:start}
@@ -163,10 +165,36 @@ p,li{
 }
 
 .hero{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:16px;
-  padding-bottom:16px;
+  /* mobile-first: stacked layout */
+  display:flex;
+  flex-direction:column; /* текст сверху, изображение снизу на мобильных */
+  gap:16px;               /* вертикальный ритм между колонками */
+  align-items:stretch;    /* дочерние блоки растягиваются до единой высоты */
+}
+
+/* Текстовый и графический блоки имеют одинаковые верхние/нижние отступы
+   — это гарантирует одинаковую визуальную высоту и равный вертикальный ритм */
+.hero > .hero-content,
+.hero > .hero-image{
+  flex:1 1 0; /* убрал лишний '%' */
+  box-sizing:border-box;
+  padding-block:24px; /* top/bottom padding — мобильная точка */
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start; /* контент начинается от верхней границы блока после padding */
+}
+
+/* Сама фотография должна заполнять доступную площадь блока, сохраняя обрезку */
+.hero .hero-photo{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* Отступ между hero и следующим разделом — важная пауза в вертикальном ритме */
+.recommended{
+  margin-top:48px; /* мобильное значение по умолчанию */
 }
 
 .headline{
@@ -256,7 +284,7 @@ p,li{
    MOBILE REFINEMENTS
 ========================= */
 
-@media (max-width:480px){
+@media (max-width:640px){
 
   .container{padding:0 12px}
 
@@ -268,11 +296,34 @@ p,li{
     padding:10px 12px;
   }
 
-  .hero-image,
-  .hero-photo{height:220px}
+  /* Сделаем чуть меньшую минимальную высоту на мобильных, чтобы не забивать экран */
+  .site-header{min-height:42px} /* уменьшено с 56px до ~42px (≈ -25%) */
 
-  .headline{font-size:22px}
-  .lede{max-width:50ch}
+  /* Мобильный вариант: изображение под текстом, фиксированная высота, сохраняем ритм */
+  .hero-image,
+  .hero .hero-photo{height:220px}
+
+  /* Центрируем текст в hero на мобильных для единого стильного ритма */
+  .hero > .hero-content{
+    align-items:center;
+    text-align:center;
+    /* уменьшенные внутренние отступы, чтобы можно было точно задать соотношение интервалов */
+    padding-block:12px;
+  }
+
+  /* Новое правило: заставляем hero занимать минимум 100vh на мобильных,
+     чтобы секция «Рекомендуем» всегда начиналась со второго экрана */
+  .hero{min-height:100vh; gap:12px}
+
+  /* Убираем внутренние отступы у блока с изображением — поднимаем изображение */
+  .hero > .hero-image{padding:0}
+
+  /* Поднимаем саму фотографию на 14px; итоговый промежуток будет 10px */
+  .page--home .hero .hero-photo{margin-top:-14px}
+
+  /* Явно задаём отступ между заголовком и лидом — отправная точка для соотношения */
+  .headline{font-size:22px; margin-bottom:12px}
+  .lede{max-width:50ch; line-height:1.2}
 
   .products-grid{gap:14px}
   .product-photo{height:140px}
@@ -286,6 +337,16 @@ p,li{
     grid-column: 3; /* занять правую колонку сетки */
     justify-self: end; /* прижать к правому краю */
   }
+
+  /* Мобильный ритм: более выраженная пауза до следующего раздела */
+  .recommended{margin-top:48px}
+
+  /* Новое правило: заставляем .mobile-break переходить на новую строку на мобильных */
+  .mobile-break{
+    display:block;
+    margin-top:2px; /* уменьшённый отступ для компактности */
+  }
+
 }
 
 /* =========================
@@ -297,6 +358,7 @@ p,li{
   .header-grid{
     display:flex;
     justify-content:space-between;
+    padding:27px 0; /* согласовано с уменьшением для всех точек */
   }
 
   .nav-list{
@@ -309,14 +371,24 @@ p,li{
 
   .products-grid{grid-template-columns:repeat(2,1fr)}
 
+  /* Десктоп/планшет: две колонки в hero, равная высота, gap вместо margin */
   .hero{
-    grid-template-columns:1fr 1fr;
+    flex-direction:row;
     gap:24px;
-    align-items:center;
+    align-items:stretch; /* гарантирует, что .hero-content и .hero-image будут одной высоты */
+  }
+
+  .hero > .hero-content,
+  .hero > .hero-image{
+    padding-block:32px; /* увеличиваем внутренние отступы для более воздушной композиции */
+    justify-content:center; /* визуально центрируем контент по вертикали */
   }
 
   .headline{font-size:2rem}
   .container{max-width:720px;padding:0 16px}
+
+  /* На больших экранах — более заметная пауза перед секцией Рекомендуем */
+  .recommended{margin-top:64px}
 }
 
 /* =========================
@@ -327,4 +399,129 @@ p,li{
   .container{max-width:var(--container)}
   .products-grid{grid-template-columns:repeat(3,1fr)}
   .headline{font-size:2.5rem}
+
+  /* Desktop: увеличить шапку примерно на 15% */
+  .site-header{min-height:55px}
+  .header-grid{padding:31px 0}
+
+  /* ещё более просторный вертикальный ритм на десктопах */
+  .hero > .hero-content,
+  .hero > .hero-image{
+    padding-block:40px;
+  }
+
+  .recommended{margin-top:64px}
+
+  /* Выравниваем цену и кнопку в карточке продукта по центру по вертикали на десктопах */
+  .page--catalog .product-meta{
+    align-items:center;
+  }
 }
+
+/* =========================
+   ARTICLE / ABOUT
+========================= */
+.article{
+  display:block; /* мобильный по умолчанию — текст над картинкой */
+  margin:0 auto;
+}
+.article-content{
+  /* больше пространства между краем блока и текстом */
+  padding-block:28px; /* увеличено для визуальной паузы */
+}
+.article-content h1{
+  margin-bottom:14px;
+}
+.article-image{
+  padding:0; /* чтобы картинка могла совпадать по границам с текстовым блоком */
+}
+.article-photo{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:cover;
+}
+
+/* Десктоп — текст слева, изображение справа; равные по высоте блоки, увеличенный gap */
+@media (min-width:769px){
+  .article{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr; /* увеличиваем колонку с изображением примерно на 15% */
+    gap:48px; /* расстояние между текстом и изображением */
+    align-items:stretch; /* гарантирует одинаковую высоту колонок */
+  }
+
+  /* согласованные внутренние отступы у текста и изображения для совпадения границ */
+  .article-content,
+  .article-image{
+    padding-block:40px; /* одинаковый верх/низ — границы совпадают */
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+
+  /* картинка занимает всю высоту своего колонки и обрезается по краям при необходимости */
+  .article-image .article-photo{
+    height:100%;
+    width:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  /* чуть больше пространства перед заголовком внутри блока (отступ от контейнера) */
+  .article-content h1{margin-top:0}
+}
+
+/* Стили для формы оформления заказа */
+.checkout-form{
+  background:rgba(255,255,255,0.6);
+  border:1px solid rgba(0,0,0,0.04);
+  padding:16px;
+  border-radius:8px;
+  max-width:720px;
+  margin-top:20px;
+}
+
+.checkout-title{font-size:1rem;margin-bottom:12px;font-weight:700}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+}
+
+.form-field{display:flex;flex-direction:column;gap:6px}
+.field-label{font-size:.875rem;color:var(--muted)}
+
+.form-field input,
+.form-field textarea{
+  border:1px solid rgba(0,0,0,0.08);
+  background:transparent;
+  padding:10px 12px;
+  border-radius:6px;
+  font-size:1rem;
+  color:var(--text);
+}
+
+.form-field textarea{min-height:80px;resize:vertical}
+
+.form-actions{display:flex;justify-content:flex-end;margin-top:8px}
+
+.btn-primary{
+  background:var(--accent);
+  color:#fff;
+  border:0;
+  padding:10px 14px;
+  border-radius:8px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.btn-primary:active{transform:translateY(1px)}
+
+/* На планшетах и десктопе — сохраняем одну колонку для полей (вертикальное расположение) */
+@media (min-width:481px){
+  .form-grid{grid-template-columns:1fr}
+  .form-field.full{grid-column:1 / -1}
+}
+

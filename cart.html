@@ -43,21 +43,35 @@
       <div>Итого: <span id="cart-total">0</span> ₽</div>
     </div>
 
-    <form id="checkout-form" class="checkout-form">
-      <h2>Оформление заказа</h2>
-      <label>Имя
-        <input name="name" required>
-      </label>
-      <label>Телефон
-        <input name="phone" required>
-      </label>
-      <label>Email
-        <input name="email" type="email">
-      </label>
-      <label>Адрес
-        <textarea name="address" required></textarea>
-      </label>
-      <button type="submit" class="btn-primary">Оформить заказ</button>
+    <!-- Обновлённая и компактная форма оформления заказа -->
+    <form id="checkout-form" class="checkout-form" aria-labelledby="checkout-heading">
+      <h2 id="checkout-heading" class="checkout-title">Оформление заказа</h2>
+
+      <div class="form-grid">
+        <label class="form-field">
+          <span class="field-label">Имя</span>
+          <input name="name" required placeholder="Иван Иванов">
+        </label>
+
+        <label class="form-field">
+          <span class="field-label">Телефон</span>
+          <input name="phone" type="tel" required placeholder="+7 (999) 000-00-00">
+        </label>
+
+        <label class="form-field">
+          <span class="field-label">Email</span>
+          <input name="email" type="email" placeholder="email@domain.ru">
+        </label>
+
+        <label class="form-field full">
+          <span class="field-label">Адрес</span>
+          <textarea name="address" required placeholder="Город, дом, улица, индекс, квартира"></textarea>
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">Оформить заказ</button>
+      </div>
     </form>
 
   </main>
