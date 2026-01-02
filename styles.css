@@ -280,6 +280,12 @@ p,li{
   .product-desc{font-size:13px}
 
   .site-footer{padding:16px 0;font-size:13px}
+
+  /* Перемещаем бургер вправо только на главной странице в мобильном виде */
+  .page--home .header-grid .burger{
+    grid-column: 3; /* занять правую колонку сетки */
+    justify-self: end; /* прижать к правому краю */
+  }
 }
 
 /* =========================
@@ -322,4 +328,3 @@ p,li{
   .products-grid{grid-template-columns:repeat(3,1fr)}
   .headline{font-size:2.5rem}
 }
-
