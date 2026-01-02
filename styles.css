@@ -133,4 +133,60 @@ p,li{overflow-wrap:break-word;word-break:break-word;hyphens:auto}
 /* Image helpers */
 .hero-photo{width:100%;height:auto;object-fit:cover;display:block}
 .article-photo{width:100%;height:auto;object-fit:cover;display:block}
-.product-photo{width:100%;height:auto;object-fit:cover;display:block}
+
+.product-photo{width:100%;height:160px;object-fit:cover;display:block}
+
+/* Mobile refinements: preserve design but improve usability on small screens */
+@media (max-width:480px){
+  /* Slightly narrower container padding for small screens */
+  .container{padding:0 12px}
+
+  /* Stack header elements to avoid cramped nav */
+  .header-grid{flex-direction:column;align-items:flex-start;gap:8px;padding:12px 0}
+  .brand a{font-size:18px}
+  .nav{display:flex;flex-wrap:wrap;gap:10px}
+  .nav a{margin-left:0;padding:8px 6px;font-size:15px}
+  .cart-link{order:2}
+
+  /* Make tap targets easier to hit */
+  .nav a,.btn-buy,.btn-primary{padding:10px 12px}
+
+  /* Hero and article adjustments */
+  .hero-image,.hero-photo{height:220px}
+  .headline{font-size:22px}
+  .lede{max-width:50ch}
+  .article{font-size:16px;max-width:calc(100% - 0px)}
+  .article-image{margin:18px 0}
+
+  /* Products — single column, comfortable spacing */
+  .products-grid{grid-template-columns:1fr;gap:14px}
+  .product-card{padding:12px}
+  .product-photo{height:140px}
+  .product-title{font-size:16px}
+  .product-desc{font-size:13px}
+
+  /* Cart: stack rows for readability */
+  .cart-row{grid-template-columns:1fr;gap:8px;padding:10px 0}
+  .cart-row .product-price,.cart-row .product-quantity{justify-self:start}
+  .cart-total{font-size:16px}
+
+  /* Forms and inputs */
+  .checkout-form{gap:10px}
+  .checkout-form input,.checkout-form textarea,.search-input{font-size:15px;padding:10px}
+  .btn-primary{width:100%;display:block}
+
+  /* Footer */
+  .site-footer{padding:16px 0;font-size:13px}
+
+  /* Misc */
+  .cart-count{font-size:13px}
+}
+
+/* Further tweaks for slightly larger phones / small tablets */
+@media (min-width:481px) and (max-width:660px){
+  .container{padding:0 16px}
+  .hero-image,.hero-photo{height:260px}
+  .headline{font-size:26px}
+  .products-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .article{font-size:17px}
+}
