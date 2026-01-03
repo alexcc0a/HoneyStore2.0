@@ -1,88 +1,153 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Корзина — Пасека</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Корзина — Пасека</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="page page--cart">
-  <header class="site-header">
+<header class="site-header">
     <div class="container header-grid">
-      <div class="brand"><a href="index.html">Пасека</a></div>
-      <!-- responsive-nav start -->
-      <button class="burger" aria-controls="main-nav-list" aria-expanded="false" aria-label="Открыть меню">
+        <div class="brand"><a href="index.html">Пасека</a></div>
+
+        <button class="burger"
+                aria-controls="main-nav-list"
+                aria-expanded="false"
+                aria-label="Открыть меню">
         <span class="burger-box">
           <span class="burger-inner"></span>
         </span>
-      </button>
-      <nav class="nav" id="main-nav" aria-label="Главная навигация">
-        <ul id="main-nav-list" class="nav-list">
-          <li><a href="catalog.html">Каталог</a></li>
-          <li><a href="about.html">О нас</a></li>
-          <li><a href="cart.html" class="cart-link">Корзина <span id="cart-count" class="cart-count">0</span></a></li>
-        </ul>
-      </nav>
-      <!-- responsive-nav end -->
-    </div>
-  </header>
+        </button>
 
-  <main class="container main-grid">
+        <nav class="nav" id="main-nav" aria-label="Главная навигация">
+            <ul id="main-nav-list" class="nav-list">
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li>
+                    <a href="cart.html" class="cart-link">
+                        Корзина <span id="cart-count" class="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container main-grid">
     <h1>Корзина</h1>
 
     <section id="cart-table" class="cart-table">
-      <!-- Rows rendered by cart.js -->
-      <div class="cart-row cart-row--head">
-        <div class="col name">Товар</div>
-        <div class="col qty">Кол-во</div>
-        <div class="col price">Цена</div>
-      </div>
+        <div class="cart-row cart-row--head">
+            <div class="col name">Товар</div>
+            <div class="col qty">Кол-во</div>
+            <div class="col price">Цена</div>
+        </div>
     </section>
 
     <div class="cart-total">
-      <div>Итого: <span id="cart-total">0</span> ₽</div>
+        <div>Итого: <span id="cart-total">0</span> ₽</div>
     </div>
 
-    <!-- Обновлённая и компактная форма оформления заказа -->
-    <form id="checkout-form" class="checkout-form" aria-labelledby="checkout-heading">
-      <h2 id="checkout-heading" class="checkout-title">Оформление заказа</h2>
+    <!-- ФОРМА ЗАКАЗА (Formspree) -->
+    <form
+            id="checkout-form"
+            class="checkout-form"
+            aria-labelledby="checkout-heading"
+            action="https://formspree.io/f/xbdlknak"
+            method="POST"
+    >
+        <h2 id="checkout-heading" class="checkout-title">
+            Оформление заказа
+        </h2>
 
-      <div class="form-grid">
-        <label class="form-field">
-          <span class="field-label">Имя</span>
-          <input name="name" required placeholder="Иван Иванов">
-        </label>
+        <!-- анти-бот -->
+        <input type="text" name="_gotcha" style="display:none">
 
-        <label class="form-field">
-          <span class="field-label">Телефон</span>
-          <input name="phone" type="tel" required placeholder="+7 (999) 000-00-00">
-        </label>
+        <!-- редирект после успешной отправки -->
+        <input
+                type="hidden"
+                name="_redirect"
+                value="https://site.ru/thanks.html"
+        >
 
-        <label class="form-field">
-          <span class="field-label">Email</span>
-          <input name="email" type="email" placeholder="email@domain.ru">
-        </label>
+        <!-- данные корзины (заполняются JS) -->
+        <input type="hidden" name="cart_items" id="cart-items-field">
+        <input type="hidden" name="cart_total" id="cart-total-field">
 
-        <label class="form-field full">
-          <span class="field-label">Адрес</span>
-          <textarea name="address" required placeholder="Город, дом, улица, индекс, квартира"></textarea>
-        </label>
-      </div>
+        <div class="form-grid">
+            <label class="form-field">
+                <span class="field-label">Имя</span>
+                <input
+                        type="text"
+                        name="name"
+                        required
+                        placeholder="Иван Иванов"
+                >
+            </label>
 
-      <div class="form-actions">
-        <button type="submit" class="btn-primary">Оформить заказ</button>
-      </div>
+            <label class="form-field">
+                <span class="field-label">Телефон</span>
+                <input
+                        type="tel"
+                        name="phone"
+                        required
+                        placeholder="+7 (999) 000-00-00"
+                >
+            </label>
+
+            <label class="form-field">
+                <span class="field-label">Email</span>
+                <input
+                        type="email"
+                        name="email"
+                        placeholder="email@domain.ru"
+                >
+            </label>
+
+            <label class="form-field full">
+                <span class="field-label">Адрес</span>
+                <textarea
+                        name="address"
+                        required
+                        placeholder="Город, улица, дом, квартира, индекс"
+                ></textarea>
+            </label>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">
+                Оформить заказ
+            </button>
+        </div>
     </form>
+</main>
 
-  </main>
-
-  <footer class="site-footer">
+<footer class="site-footer">
     <div class="container footer-grid">
-      <p>© Пасека — честный мёд.</p>
+        <p>© Пасека — честный мёд.</p>
     </div>
-  </footer>
+</footer>
 
-  <script type="module" src="cart.js"></script>
-  <script src="assets/js/scripts.js" defer></script>
+<script type="module" src="cart.js"></script>
+<script src="assets/js/scripts.js" defer></script>
+
+<!-- Передача данных корзины в форму -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const itemsField = document.getElementById('cart-items-field');
+        const totalField = document.getElementById('cart-total-field');
+
+        // пример: данные уже есть в localStorage
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const total = document.getElementById('cart-total')?.textContent || '0';
+
+        itemsField.value = cart.map(i =>
+            `${i.title} x${i.qty} (${i.price}₽)`
+        ).join('; ');
+
+        totalField.value = total;
+    });
+</script>
 </body>
 </html>
