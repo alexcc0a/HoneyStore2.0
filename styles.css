@@ -511,6 +511,24 @@ button::-moz-focus-inner{border:0;padding:0}
     transform:scale(1.1);
     transform-origin:center center;
   }
+
+  /* ABOUT PAGE - DESKTOP */
+  .page--about .article{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:48px;
+    align-items:center; /* выравниваем текст и картинку по вертикали */
+  }
+
+  .page--about .article-image{
+    margin:0;
+    display:flex;
+    justify-content:center;
+  }
+
+  .page--about .site-footer{
+    margin-top:72px; /* больше пауза после изображения на ПК */
+  }
 }
 
 /* =========================
@@ -599,5 +617,8 @@ button::-moz-focus-inner{border:0;padding:0}
   .form-field textarea{
     width:100%;
   }
-}
 
+  .page--cart .form-actions{
+    margin-top:16px; /* небольшая пауза между адресом и кнопкой на ПК */
+  }
+}
