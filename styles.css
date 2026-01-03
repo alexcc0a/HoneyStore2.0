@@ -8,6 +8,7 @@
   --gutter:24px;
   --brand-font:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --header-gap:1rem;
+  font-size:16px;
 }
 
 /* =========================
@@ -15,20 +16,19 @@
 ========================= */
 *{box-sizing:border-box}
 html,body{height:100%;overflow-x:hidden;-webkit-overflow-scrolling:touch}
-:root{font-size:16px}
 
 body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:var(--brand-font),sans-serif;
+  background:#FFF9F1;
+  color:#222;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   line-height:1.6;
   margin:0;
 }
 
 .container{
-  max-width:var(--container);
+  max-width:1100px;
   margin:0 auto;
-  padding:0 var(--gutter);
+  padding:0 24px;
 }
 
 img,picture,video,iframe,svg{
@@ -63,7 +63,7 @@ p,li{
 
 .site-header{
   border-bottom:1px solid rgba(0,0,0,.06);
-  margin-bottom:var(--header-gap);
+  margin-bottom:1rem;
   min-height:48px; /* уменьшено с 64px до ~48px (≈ -25%) */
   /* background был DEBUG — удалён */
 }
@@ -80,7 +80,7 @@ p,li{
 .brand a{
   font-weight:700;
   font-size:1.125rem;
-  color:var(--text);
+  color:#222;
   text-decoration:none;
 }
 
@@ -98,7 +98,7 @@ p,li{
 
 .nav-list a{
   text-decoration:none;
-  color:var(--text);
+  color:#222;
   font-size:1rem;
 }
 
@@ -137,7 +137,7 @@ p,li{
 .burger-inner::before,
 .burger-inner::after{
   display:block;
-  background:var(--text);
+  background:#222;
   height:2px;
   border-radius:2px;
   width:100%;
@@ -250,7 +250,7 @@ button::-moz-focus-inner{border:0;padding:0}
 
 .lede{
   max-width:60ch;
-  color:var(--muted);
+  color:#6b6b6b;
   margin:0;
 }
 
@@ -281,7 +281,7 @@ button::-moz-focus-inner{border:0;padding:0}
 
 .product-desc{
   margin:0 0 12px;
-  color:var(--muted);
+  color:#6b6b6b;
   font-size:.875rem;
 }
 
@@ -314,7 +314,7 @@ button::-moz-focus-inner{border:0;padding:0}
 .site-footer{
   border-top:1px solid rgba(0,0,0,.06);
   padding:20px 0;
-  color:var(--muted);
+  color:#6b6b6b;
   font-size:.875rem;
 }
 
@@ -482,7 +482,7 @@ button::-moz-focus-inner{border:0;padding:0}
 ========================= */
 
 @media (min-width:769px){
-  .container{max-width:var(--container)}
+  .container{max-width:1100px}
   .products-grid{grid-template-columns:repeat(3,1fr)}
   .headline{font-size:2.5rem}
 
