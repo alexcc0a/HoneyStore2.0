@@ -575,7 +575,7 @@ button::-moz-focus-inner{border:0;padding:0}
 @media (min-width:641px){
   /* Отступ между "Итого" и "Оформление заказа" для ПК */
   .checkout-form{
-    margin-top:48px;
+    margin-top:64px;
   }
 
   /* Вертикальное расположение полей формы на ПК */
