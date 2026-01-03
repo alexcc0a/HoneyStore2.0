@@ -139,35 +139,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
   // checkout form
     // checkout form — отправка в Formspree
-    const form = document.getElementById('checkout-form');
-    if(form){
-        form.addEventListener('submit', async (e)=>{
-            e.preventDefault();
-
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (!response.ok) {
-                    throw new Error('Formspree error');
-                }
-
-                window.Cart.clear();
-                form.reset();
-                alert('Заказ отправлен. Мы свяжемся с вами в ближайшее время.');
-            } catch (err) {
-                alert('Ошибка отправки заказа. Попробуйте позже.');
-                console.error(err);
-            }
-        });
-    }
-
-
 });
 
 export default window.Cart;
