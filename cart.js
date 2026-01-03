@@ -138,20 +138,35 @@ window.addEventListener('DOMContentLoaded', ()=>{
   window.Cart.onChange(()=>updateUI());
 
   // checkout form
-  const form = document.getElementById('checkout-form');
-  if(form){
-    form.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      // simple validation handled by required attributes
-      const data = new FormData(form);
-      const payload = Object.fromEntries(data.entries());
-      // in real app we'd post to server. Here show console and clear cart
-      console.info('Оформлен заказ', payload, window.Cart.getItems());
-      window.Cart.clear();
-      form.reset();
-      alert('Спасибо! Мы получили ваш заказ — это демо.');
-    });
-  }
+    // checkout form — отправка в Formspree
+    const form = document.getElementById('checkout-form');
+    if(form){
+        form.addEventListener('submit', async (e)=>{
+            e.preventDefault();
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Formspree error');
+                }
+
+                window.Cart.clear();
+                form.reset();
+                alert('Заказ отправлен. Мы свяжемся с вами в ближайшее время.');
+            } catch (err) {
+                alert('Ошибка отправки заказа. Попробуйте позже.');
+                console.error(err);
+            }
+        });
+    }
+
 
 });
 
