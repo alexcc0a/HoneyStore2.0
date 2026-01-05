@@ -7,58 +7,65 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="page page--home">
-  <header class="site-header">
-    <div class="container header-grid">
-      <div class="brand">
-        <a href="index.html">Пасека</a>
-      </div>
-      <!-- responsive-nav start -->
-      <button class="burger" aria-controls="main-nav-list" aria-expanded="false" aria-label="Открыть меню">
-        <span class="burger-box">
-          <span class="burger-inner"></span>
-        </span>
-      </button>
-      <nav class="nav" id="main-nav" aria-label="Главная навигация">
-        <ul id="main-nav-list" class="nav-list">
-          <li><a href="catalog.html">Каталог</a></li>
-          <li><a href="about.html">О нас</a></li>
-          <li><a href="cart.html" class="cart-link">Корзина <span id="cart-count" class="cart-count">0</span></a></li>
-        </ul>
-      </nav>
-      <!-- responsive-nav end -->
-    </div>
-  </header>
-
-  <main class="container main-grid">
-    <section class="hero">
-      <div class="hero-content">
-        <h1 class="headline">Натуральный мёд<br>с пасеки.<br>Без маркетинга.<br>С пчёлами.</h1>
-        <p class="lede">Мы держим пасеку, а не бренд.<br>Пчёлы делают мёд.<br>Мы просто аккуратно его собираем.</p>
-        <div class="hero-image hero-image--mobile">
-          <!-- Режим: используем загруженную фотографию (предполагается assets/images/glavnay.png) -->
-          <img src="assets/images/glavnay.png" alt="Пасека — ульи и поле" class="hero-photo">
+  <div class="hero-wrapper">
+    <section class="hero-section hero-section--top">
+      <header class="site-header">
+        <div class="container header-grid">
+          <div class="brand">
+            <a href="index.html">Пасека</a>
+          </div>
+          <!-- responsive-nav start -->
+          <button class="burger" aria-controls="main-nav-list" aria-expanded="false" aria-label="Открыть меню">
+            <span class="burger-box">
+              <span class="burger-inner"></span>
+            </span>
+          </button>
+          <nav class="nav" id="main-nav" aria-label="Главная навигация">
+            <ul id="main-nav-list" class="nav-list">
+              <li><a href="catalog.html">Каталог</a></li>
+              <li><a href="about.html">О нас</a></li>
+              <li><a href="cart.html" class="cart-link">Корзина <span id="cart-count" class="cart-count">0</span></a></li>
+            </ul>
+          </nav>
+          <!-- responsive-nav end -->
         </div>
-      </div>
-      <div class="hero-image hero-image--desktop">
-        <!-- Изображение справа для ПК -->
-        <img src="assets/images/glavnay.png" alt="Пасека — ульи и поле" class="hero-photo">
-      </div>
+      </header>
+
+      <main class="container main-grid">
+        <section class="hero">
+          <div class="hero-content">
+            <h1 class="headline">Натуральный мёд<br>с пасеки.<br>Без маркетинга.<br>С пчёлами.</h1>
+            <p class="lede">Мы держим пасеку, а не бренд.<br>Пчёлы делают мёд.<br>Мы просто аккуратно его собираем.</p>
+            <div class="hero-image hero-image--mobile">
+              <!-- Режим: используем загруженную фотографию (предполагается assets/images/glavnay.png) -->
+              <img src="assets/images/glavnay.png" alt="Пасека — ульи и поле" class="hero-photo">
+            </div>
+          </div>
+          <div class="hero-image hero-image--desktop">
+            <!-- Изображение справа для ПК -->
+            <img src="assets/images/glavnay.png" alt="Пасека — ульи и поле" class="hero-photo">
+          </div>
+        </section>
+      </main>
     </section>
 
-    <section class="recommended">
-      <h2 class="section-title">Рекомендуем</h2>
-      <div id="recommended-grid" class="products-grid">
-        <!-- Product cards rendered by catalog.js -->
-      </div>
+    <section class="hero-section hero-section--bottom">
+      <main class="container main-grid">
+        <section class="recommended">
+          <h2 class="section-title">Рекомендуем</h2>
+          <div id="recommended-grid" class="products-grid">
+            <!-- Product cards rendered by catalog.js -->
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <p>© Пасека — честный мёд. Без слов «премиум».</p>
+        </div>
+      </footer>
     </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <p>© Пасека — честный мёд. Без слов «премиум».</p>
-    </div>
-  </footer>
+  </div>
 
   <!-- Добавлен шаблон карточки, чтобы catalog.js мог рендерить карточки и на index.html -->
   <template id="product-template">

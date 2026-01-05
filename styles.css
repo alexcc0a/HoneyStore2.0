@@ -435,6 +435,44 @@ button::-moz-focus-inner{border:0;padding:0}
 
  }
 
+@media (max-width:768px){
+  /* Scroll snap only on mobile home page */
+  html{height:100%}
+  body.page--home{height:100%;overflow:hidden}
+
+  body.page--home .hero-wrapper{
+    height:100vh;
+    overflow-y:auto;
+    scroll-snap-type:y mandatory;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  body.page--home .hero-section{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+  }
+
+  body.page--home .hero-section--top .main-grid{flex:1}
+
+  /* Keep footer at the bottom while list can scroll */
+  body.page--home .hero-section--bottom{overflow:hidden}
+
+  body.page--home .hero-section--bottom .main-grid{
+    flex:1;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  /* Remove nested 100vh on hero to avoid double height */
+  body.page--home .hero{min-height:auto}
+
+  /* Tighten spacing on the second screen */
+  body.page--home .hero-section--bottom .recommended{margin-top:24px}
+}
+
 /* =========================
    TABLET +
 ========================= */
