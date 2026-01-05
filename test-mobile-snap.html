@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест мобильного Scroll Snap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #222;
+        }
+        .preview {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .mobile-frame {
+            width: 375px;
+            height: 812px;
+            margin: 0 auto;
+            border: 10px solid #333;
+            border-radius: 40px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        .mobile-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 44px;
+            background: #333;
+            z-index: 10;
+            border-radius: 0 0 30px 30px;
+        }
+        .mobile-content {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        .checklist {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #4CAF50;
+        }
+        .checklist h3 {
+            margin-bottom: 10px;
+            color: #222;
+        }
+        .checklist ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .checklist li {
+            padding: 8px 0;
+            color: #666;
+            font-size: 14px;
+        }
+        .checklist li::before {
+            content: '✓ ';
+            color: #4CAF50;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .note {
+            margin-top: 15px;
+            padding: 12px;
+            background: #fff3cd;
+            border-radius: 4px;
+            border-left: 4px solid #ffc107;
+            color: #856404;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Тест мобильного Scroll Snap (≤768px)</h1>
+
+        <div class="mobile-frame">
+            <iframe src="http://localhost:8000/index.html"></iframe>
+        </div>
+
+        <div class="checklist">
+            <h3>✓ Проверочный список</h3>
+            <ul>
+                <li><strong>Первый экран:</strong> Header + "Натуральный мёд с пасеки..." + изображение пасеки (100vh)</li>
+                <li><strong>Свайп вверх:</strong> Экран полностью уходит, происходит snap ко второму экрану без промежуточных остановок</li>
+                <li><strong>Второй экран:</strong> "Рекомендуем" виден сверху, список продуктов скроллится, "© Пасека..." видна снизу (100vh всего)</li>
+                <li><strong>Свайп вниз:</strong> Возврат snap к первому экрану</li>
+                <li><strong>Внутренний скролл:</strong> Если карточек много, можно скроллить список, заголовок и футер остаются в пределах экрана</li>
+                <li><strong>Десктоп (>768px):</strong> Обычный скролл без snap, обе секции видны на одной странице</li>
+            </ul>
+        </div>
+
+        <div class="note">
+            <strong>Примечание:</strong> Откройте DevTools (F12), выберите Device Toggle Toolbar (Ctrl+Shift+M), установите размер 375x667 (мобильный) и проверьте поведение скролла.
+        </div>
+    </div>
+</body>
+</html>
+
