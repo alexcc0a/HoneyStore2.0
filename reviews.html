@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Отзывы — Пасека</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page page--reviews">
+  <header class="site-header">
+    <div class="container header-grid">
+      <div class="brand"><a href="index.html">Пасека</a></div>
+      <button class="burger" aria-controls="main-nav-list" aria-expanded="false" aria-label="Открыть меню">
+        <span class="burger-box">
+          <span class="burger-inner"></span>
+        </span>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Главная навигация">
+        <ul id="main-nav-list" class="nav-list">
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="about.html">О нас</a></li>
+          <li><a href="reviews.html" aria-current="page">Отзывы</a></li>
+          <li><a href="cart.html" class="cart-link">Корзина <span id="cart-count" class="cart-count">0</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-grid">
+    <section class="reviews">
+      <header class="reviews-header">
+        <h1 class="reviews-title">Отзывы</h1>
+        <p class="reviews-lede">Честные впечатления от покупателей. Коротко. По делу.</p>
+      </header>
+
+      <div class="reviews-grid">
+        <!-- Review card 1 -->
+        <article class="review-card">
+          <div class="review-media">
+            <video class="review-video" controls preload="metadata" playsinline>
+              <source src="assets/video/otziv1.mp4" type="video/mp4">
+              Ваш браузер не поддерживает видео.
+            </video>
+          </div>
+          <div class="review-meta">
+            <div class="review-author-date">
+              <span class="review-author">Иван П.</span>
+              <span class="review-date" aria-label="Дата отзыва">25.01.2026</span>
+            </div>
+            <p class="review-text">Нужно, чтобы малыши из сладкого ели только мёд — без вредного сахара и шоколада.
+                И мы, взрослые, тоже 🙂.</p>
+          </div>
+        </article>
+
+        <!-- Review card 2 (пример для сетки, можно добавить позже новые видео) -->
+<!--        <article class="review-card">-->
+<!--          <div class="review-media">-->
+<!--            <div class="review-video placeholder" aria-hidden="true"></div>-->
+<!--          </div>-->
+<!--          <div class="review-meta">-->
+<!--            <div class="review-author-date">-->
+<!--              <span class="review-author">Мария С.</span>-->
+<!--              <span class="review-date">28.01.2026</span>-->
+<!--            </div>-->
+<!--            <p class="review-text">Липовый — фаворит. Беру уже третий сезон.</p>-->
+<!--          </div>-->
+<!--        </article>-->
+
+        <!-- Review card 3 -->
+<!--        <article class="review-card">-->
+<!--          <div class="review-media">-->
+<!--            <div class="review-video placeholder" aria-hidden="true"></div>-->
+<!--          </div>-->
+<!--          <div class="review-meta">-->
+<!--            <div class="review-author-date">-->
+<!--              <span class="review-author">Александр Н.</span>-->
+<!--              <span class="review-date">05.11.2025</span>-->
+<!--            </div>-->
+<!--            <p class="review-text">Без маркетинга, без сахара. Ровно то, что нужно.</p>-->
+<!--          </div>-->
+<!--        </article>-->
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>© Пасека — честный мёд. Без слов «премиум».</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/scripts.js" defer></script>
+</body>
+</html>
